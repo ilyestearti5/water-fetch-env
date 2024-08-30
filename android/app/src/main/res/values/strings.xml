@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">water-fetch</string>
+    <string name="title_activity_main">water-fetch</string>
+    <string name="package_name">waterFetch.com.app</string>
+    <string name="custom_url_scheme">waterFetch.com.app</string>
+</resources>
