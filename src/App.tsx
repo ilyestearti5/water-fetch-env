@@ -1,9 +1,9 @@
-import { Card, Line, MarkDown } from "@water-fetch/ui/dist/components";
-import {} from "@water-fetch/ui/dist/hooks"; /* Hooks Of Water Fetch */
-import {} from "@water-fetch/ui/dist/app"; /* App Of Water Fetch */
-import {} from "@water-fetch/ui/dist/layouts"; /* Layouts Of Water Fetch */
-import {} from "@water-fetch/ui/dist/apis"; /* Apis Of Water Fetch */
-import {} from "@water-fetch/ui/dist/utils"; /* Utils Of Water Fetch */
+import { Card, Line, MarkDown } from "water-fetch/ui/components";
+import {} from "water-fetch/ui/hooks"; /* Hooks Of Water Fetch */
+import {} from "water-fetch/ui/app"; /* App Of Water Fetch */
+import {} from "water-fetch/ui/layouts"; /* Layouts Of Water Fetch */
+import {} from "water-fetch/ui/apis"; /* Apis Of Water Fetch */
+import {} from "water-fetch/ui/utils"; /* Utils Of Water Fetch */
 export const App = () => {
   return (
     <div className="flex justify-center items-center w-full h-full">
