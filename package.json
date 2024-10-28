@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test.unit": "vitest",
     "lint": "eslint",
-    "postinstall": "npm link water-fetch"
+    "postinstall": "npm link water-fetch && npm link water-fetch-errors"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
