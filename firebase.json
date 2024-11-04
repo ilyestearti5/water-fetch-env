@@ -2,7 +2,7 @@
   "hosting": {
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "site": "your-web-site",
+    "site": "talk-dz",
     "rewrites": [
       {
         "source": "**",

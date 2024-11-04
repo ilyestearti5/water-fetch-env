@@ -4,8 +4,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 export const server = new Server({
-  appId: "1:911813185967:web:95e0b16f0ebdeb8d315f5a",
-  measurementId: "G-42P7QE615N",
+  appId: "1:911813185967:web:82a9e08ffb88e8c9315f5a",
+  measurementId: "G-WFMHHED4ZD",
   projectId: import.meta.env.VITE_PROJECT_ID,
 });
 export const firebaseApp = initializeApp(server.config);

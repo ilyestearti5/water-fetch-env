@@ -49,5 +49,8 @@ export default defineConfig(async ({ command }) => {
       environment: "jsdom",
       setupFiles: "./src/setupTests.ts",
     },
+    server: {
+      port: 6585,
+    },
   };
 });
