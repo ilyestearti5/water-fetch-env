@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test.unit": "vitest",
     "lint": "eslint",
-    "postinstall": "npm link water-fetch && npm link water-fetch-errors"
+    "postinstall": "npm link water-fetch water-fetch-errors"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
@@ -22,7 +22,6 @@
     "@capacitor/status-bar": "6.0.1",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
-    "firebase": "^10.14.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^5.3.4",
