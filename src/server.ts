@@ -1,14 +1,32 @@
-import { Server } from "water-fetch/ui/apis";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { initializeApp } from "firebase/app";
-export const server = new Server({
-  appId: "1:911813185967:web:82a9e08ffb88e8c9315f5a",
-  measurementId: "G-WFMHHED4ZD",
-  projectId: import.meta.env.VITE_PROJECT_ID,
+import { ClientCloud, initMyCloud } from "biqpod/ui/apis";
+const myCloud = initMyCloud({
+  // cloud config 🥰
 });
-export const firebaseApp = initializeApp(server.config);
-export const firestore = getFirestore(firebaseApp);
-export const auth = getAuth(firebaseApp);
-export const storage = getStorage(firebaseApp);
+export const cloud = new ClientCloud("main", myCloud);
+export const { nosql: db, auth, storage } = cloud.app;
+export const {
+  getDoc,
+  getDocs,
+  collections,
+  createDoc,
+  upsertDoc: setDoc,
+  deleteDoc,
+  onCollectionSnapshot,
+  onDocSnapshot,
+  onAutoSnapshot,
+} = myCloud.app.nosql;
+export const {
+  signIn,
+  signOut,
+  getUserToken,
+  onAuthStateChanged,
+  deleteUser,
+  signInWithCustomToken,
+  getCurrentAuth,
+} = myCloud.app.auth;
+export const {
+  upsertFile: uploadFile,
+  deleteFile,
+  getDownloadURL,
+  getFileContent: getContent,
+} = myCloud.app.storage;

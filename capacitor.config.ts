@@ -1,8 +1,8 @@
-import waterFetchConfig from "./waterfetch.config";
+import biqpodConfig from "./project.config";
 import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
-  appId: `com.${waterFetchConfig.appId}.app`,
-  appName: waterFetchConfig.appName,
+  appId: `com.${biqpodConfig.appId}.app`,
+  appName: biqpodConfig.appName,
   webDir: "dist",
 };
 export default config;

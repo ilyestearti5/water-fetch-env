@@ -50,7 +50,7 @@
     "prefix": "color",
     "body": "const colorMerge = useColorMerge()",
   },
-  "srg": {
+  "srt": {
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "prefix": "srg",
     "body": "const $1 = useCopyState<$2>($3)",

@@ -1,5 +1,5 @@
 {
-  "name": "water-fetch-env",
+  "name": "@biqpod/env",
   "private": true,
   "version": "0.1.1",
   "type": "module",
@@ -7,10 +7,10 @@
     "dev": "vite",
     "compile": "tsc",
     "build": "tsc && vite build",
+    "electron.build": "vite build --mode electron",
     "preview": "vite preview",
-    "test.unit": "vitest",
     "lint": "eslint",
-    "postinstall": "npm link water-fetch water-fetch-errors"
+    "ui": "npm i ../biqpod --force"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
@@ -22,6 +22,8 @@
     "@capacitor/status-bar": "6.0.1",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "biqpod": "file:../biqpod",
+    "electron-builder": "^25.1.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^5.3.4",
@@ -53,5 +55,5 @@
     "vite": "~5.2.0",
     "vitest": "^0.34.6"
   },
-  "description": "Water Fetch Application"
+  "description": "Biq Pod Application"
 }

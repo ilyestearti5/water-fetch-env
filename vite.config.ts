@@ -1,56 +1,51 @@
-/// <reference types="vitest" />
-import react from "@vitejs/plugin-react";
-import pkg from "./package.json";
 import legacy from "@vitejs/plugin-legacy";
-import fs from "node:fs/promises";
-import { defineConfig } from "vite";
-function incrementVersion(version: string) {
-  // Check if the version has a ~ or ^ prefix
-  const prefix = version[0] === "~" || version[0] === "^" ? version[0] : "";
-  const versionWithoutPrefix = prefix ? version.slice(1) : version;
-  const parts = versionWithoutPrefix.split(".").map(Number);
-  if (prefix === "~") {
-    // Increment the last part for ~ prefix
-    parts[2]++;
-  } else if (prefix === "^") {
-    // Increment the last part for ^ prefix
-    parts[2]++;
-  } else {
-    // General increment logic
-    for (let i = parts.length - 1; i >= 0; i--) {
-      if (parts[i] < 9) {
-        parts[i]++;
-        break;
-      } else {
-        parts[i] = 0;
-      }
-    }
-  }
-  return prefix + parts.join(".");
-}
-// https://vitejs.dev/config/
-export default defineConfig(async ({ command }) => {
-  if (command == "build") {
-    // update the version if it's in the build process
-    const version = incrementVersion(pkg.version);
-    try {
-      await fs.writeFile(
-        "./package.json",
-        JSON.stringify({ ...pkg, version }, undefined, 2),
-        "utf-8"
-      );
-    } catch {}
-    console.log("Building For Version ...", version);
-  }
+import path from "node:path";
+import react from "@vitejs/plugin-react";
+import electron from "vite-plugin-electron";
+import { PluginOption, defineConfig } from "vite";
+import { development } from "./app.json";
+export default defineConfig(async ({ mode }) => {
+  const isElectron = mode === "electron";
+  const plugins: PluginOption[] = [
+    react({}),
+    legacy(),
+    isElectron &&
+      electron({
+        // Main process entry file of the Electron App.
+        entry: "electron/index.ts",
+        // If this `onstart` is passed, Electron App will not start automatically.
+        // However, you can start Electroo App via `startup` function.
+        onstart(args) {
+          args.startup();
+        },
+      }),
+  ];
   return {
-    plugins: [react(), legacy()],
-    test: {
-      globals: true,
-      environment: "jsdom",
-      setupFiles: "./src/setupTests.ts",
+    resolve: {
+      alias: {
+        "@": path.resolve("./src"),
+        Components: path.resolve("./src/Components"),
+        database: path.resolve("./src/data/db"),
+        models: path.resolve("./src/data"),
+        hooks: path.resolve("./src/hooks"),
+        api: path.resolve("./src/apis"),
+        utils: path.resolve("./utils"),
+        main: path.resolve("./"),
+        assets: path.resolve("./src/assets"),
+      },
     },
+    build: {
+      rollupOptions: {
+        input: {
+          index: "index.html",
+        },
+      },
+    },
+    plugins,
     server: {
-      port: 6585,
+      port: development.port,
+      host: true,
     },
+    clearScreen: false,
   };
 });
