@@ -1,5 +1,5 @@
 import "./index.css";
-import "biqpod/ui/style.css";
+import "biqpod/ui/biqpod.css";
 import "./server";
 import { startApplication } from "biqpod/ui/app";
 import { App } from "./App";

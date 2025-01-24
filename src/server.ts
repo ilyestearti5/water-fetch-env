@@ -1,32 +1,33 @@
-import { ClientCloud, initMyCloud } from "biqpod/ui/apis";
-const myCloud = initMyCloud({
+import { initMyCloud } from "biqpod/ui/apis";
+export const cloud = initMyCloud({
   // cloud config 🥰
 });
-export const cloud = new ClientCloud("main", myCloud);
+// this is needed in the project for default informations
+cloud.setAsMain();
 export const { nosql: db, auth, storage } = cloud.app;
 export const {
   getDoc,
   getDocs,
-  collections,
+  getCollections,
   createDoc,
   upsertDoc: setDoc,
   deleteDoc,
   onCollectionSnapshot,
   onDocSnapshot,
   onAutoSnapshot,
-} = myCloud.app.nosql;
+} = cloud.app.nosql;
 export const {
   signIn,
   signOut,
-  getUserToken,
+  generateToken,
   onAuthStateChanged,
   deleteUser,
   signInWithCustomToken,
   getCurrentAuth,
-} = myCloud.app.auth;
+} = cloud.app.auth;
 export const {
   upsertFile: uploadFile,
   deleteFile,
   getDownloadURL,
   getFileContent: getContent,
-} = myCloud.app.storage;
+} = cloud.app.storage;
